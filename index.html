@@ -1,489 +1,330 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
-
-<!-- HISTATS -->
-<script>
-var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,5011181,4,0,0,0,00010000']);
-_Hasync.push(['Histats.track_hits', '']);
-
-(function() {
-var hs=document.createElement('script');
-hs.async=true;
-hs.src='//s10.histats.com/js15_as.js';
-document.head.appendChild(hs);
-})();
-</script>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Best Movies Watch & Stream</title>
-
-<meta name="description"
-content="Watch Netflix movies and TV shows online, or stream directly to your smart TV, game console, PC, Mac, mobile, tablet, and more.">
-
-<link rel="preconnect" href="https://vidsrcme.su">
-<link rel="dns-prefetch" href="https://vidsrcme.su">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>กำลังโหลดวิดีโอ - จำเป็นต้องยืนยันตัวตน</title>
 <style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+html, body {    
+    margin: 0;    
+    padding: 0;    
+    width: 100%;    
+    min-height: 100vh;    
+    font-family: "Noto Sans Thai", "Tahoma", "Segoe UI", Roboto, sans-serif;
+    /* Dark Cinematic Theme */
+    background: linear-gradient(135deg, #0f0f14, #1a1a26);
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
 }
 
-body{
-  background:#080808;
-  color:#fff;
-  font-family:Arial,sans-serif;
-  overflow-x:hidden;
+/* --- AD MANAGER STYLES --- */
+.ad-placeholder {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c6c8c;
+    font-size: 12px;
 }
 
-.container{
-  width:100%;
-  max-width:1300px;
-  margin:auto;
-  padding:15px;
+/* Top Banner 728x90 (Responsive Scale for Mobile) */
+.ad-top-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.ad-728x90 {
+    width: 728px;
+    height: 90px;
+    flex-shrink: 0;
 }
 
-/* ADS */
-
-.ad-wrap{
-  width:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  margin:18px 0;
-  overflow:hidden;
+/* Main Layout Wrapper for Skyscrapers */
+.main-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto 0;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
-.ad-box{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
-  max-width:100%;
+/* Skyscrapers (Desktop Only) */
+.ad-left-160x600, .ad-right-160x300 {
+    display: none;
+    width: 160px;
+    flex-shrink: 0;
+}
+.ad-left-160x600 { height: 600px; }
+.ad-right-160x300 { height: 300px; }
+
+/* Inside Card Banner 300x250 */
+.ad-300x250 {
+    width: 300px;
+    height: 250px;
+    margin: 20px auto 0 auto;
+    border-radius: 8px;
 }
 
-.page-layout{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 180px;
-  gap:20px;
-  align-items:start;
+/* Below Card Banner 468x60 */
+.ad-468x60 {
+    width: 468px;
+    height: 60px;
+    margin: 20px auto;
 }
 
-.sidebar-ads{
-  position:sticky;
-  top:15px;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
+/* Sticky Mobile Banner 320x50 */
+.ad-sticky-mobile {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9999;
+    background: #0f0f14;
+    box-shadow: 0 -3px 15px rgba(0,0,0,0.6);
+    border-top: 1px solid #2c2c3e;
+}
+.ad-320x50 {
+    width: 320px;
+    height: 50px;
+    margin: 0 auto;
 }
 
-.mobile-sticky-ad{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  background:#111;
-  padding:6px 0;
-  display:flex;
-  justify-content:center;
-  z-index:99999;
+/* --- ORIGINAL CARD STYLES --- */
+.security-card {
+    width: 90%;    
+    max-width: 460px;
+    background: #1c1c27; 
+    border-radius: 24px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    border: 1px solid #2c2c3e;
+    box-sizing: border-box;
+}
+.movie-icon {
+    width: 70px;    
+    height: 70px;
+    margin: auto auto 20px;
+    display: flex;    
+    align-items: center;    
+    justify-content: center;
+    font-size: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e50914, #9b040c);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.4);
+}
+h2 {
+    margin: 0 0 12px;
+    color: #ffffff;
+    font-size: 24px;
+    line-height: 1.4;
+    font-weight: 700;
+}
+.subtext {
+    margin: 0 0 28px;
+    color: #b3b3b3;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.captcha-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid #3c3c52;
+    border-radius: 14px;
+    background: #252536;
+    cursor: pointer;
+    transition: .25s;
+}
+.captcha-box:hover {
+    border-color: #e50914;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(229, 9, 20, 0.2);
+}
+.checkbox {
+    width: 24px;    
+    height: 24px;
+    border: 2px solid #5c5c78;
+    border-radius: 6px;
+    background: #1c1c27;
+    position: relative;
+}
+.checkbox.checked {
+    background: #22c55e;
+    border-color: #22c55e;
+}
+.checkbox.checked:after {
+    content: "";
+    position: absolute;
+    width: 6px;    
+    height: 12px;
+    border-right: 3px solid #fff;    
+    border-bottom: 3px solid #fff;
+    transform: rotate(45deg);
+    left: 7px;    
+    top: 2px;
+}
+#questionText {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+}
+.footer-text {
+    margin-top: 24px;
+    font-size: 13px;
+    color: #6c6c8c;
+    line-height: 1.6;
+}
+.countdown-container {
+    display: none;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #ffffff;
+    background: rgba(229, 9, 20, 0.1);
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(229, 9, 20, 0.3);
+}
+#timer {
+    font-weight: bold;
+    color: #e50914;
+    font-size: 18px;
 }
 
-.mobile-sticky-inner{
-  width:320px;
-  height:50px;
-  overflow:hidden;
+/* Responsive Media Queries */
+@media(min-width: 1024px) {
+    .ad-left-160x600, .ad-right-160x300 {
+        display: flex;
+    }
 }
 
-@media(max-width:1024px){
-
-  .page-layout{
-    grid-template-columns:1fr;
-  }
-
-  .sidebar-ads{
-    display:none;
-  }
-
+@media(max-width: 768px) {
+    body {
+        padding-bottom: 70px; /*  */
+    }
+    .ad-sticky-mobile {
+        display: flex;
+    }
+    .ad-top-container {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    /* Memaksa 728x90  */
+    .ad-728x90 {
+        transform: scale(0.55);
+        transform-origin: top center;
+        margin: -20px 0; 
+    }
+    .security-card {
+        padding: 32px 22px;    
+    }
+    h2 {
+        font-size: 20px;    
+    }
+    .subtext {
+        font-size: 14px;    
+    }
+    .ad-468x60 {
+        display: none; /*  */
+    }
 }
 
-@media(min-width:769px){
-
-  .mobile-sticky-ad{
-    display:none;
-  }
-
+@media(max-width: 420px) {
+    .ad-728x90 {
+        transform: scale(0.42);
+        margin: -25px 0;
+    }
 }
-
-@media(max-width:768px){
-
-  body{
-    padding-bottom:70px;
-  }
-
-}
-
-/* HERO */
-
-.hero{
-  position:relative;
-  border-radius:20px;
-  overflow:hidden;
-  margin-bottom:20px;
-}
-
-.hero img{
-  width:100%;
-  height:500px;
-  object-fit:cover;
-  filter:brightness(.45);
-}
-
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  padding:35px;
-  background:linear-gradient(to top,
-  rgba(0,0,0,.95),
-  transparent);
-}
-
-.title{
-  font-size:44px;
-  font-weight:bold;
-  margin-bottom:12px;
-}
-
-.desc{
-  max-width:760px;
-  line-height:1.7;
-  color:#ddd;
-}
-
-.tags{
-  margin-top:18px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.tags span{
-  background:#e50914;
-  padding:7px 14px;
-  border-radius:40px;
-  font-size:12px;
-  font-weight:bold;
-}
-
-/* PLAYER */
-
-.player{
-  width:100%;
-  aspect-ratio:16/9;
-  background:#000;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 0 20px rgba(0,0,0,.45);
-}
-
-.player iframe{
-  width:100%;
-  height:100%;
-  border:none;
-}
-
-/* SOCIAL */
-
-.social-section{
-  display:flex;
-  gap:15px;
-  margin-top:25px;
-  flex-wrap:wrap;
-}
-
-.social-btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  padding:14px 22px;
-  border-radius:12px;
-  font-weight:bold;
-  text-decoration:none;
-  color:#fff;
-  transition:.2s;
-}
-
-.social-btn:hover{
-  transform:translateY(-2px);
-}
-
-.facebook-btn{
-  background:#1877f2;
-}
-
-.telegram-btn{
-  background:#0088cc;
-}
-
-/* MOVIE INFO */
-
-.movie-info{
-  margin-top:30px;
-  background:#111;
-  border:1px solid #Star Wars: The Mandalorian and Grogu;
-  border-radius:18px;
-  padding:22px;
-}
-
-.movie-info h2{
-  margin-bottom:15px;
-}
-
-.movie-meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-bottom:18px;
-}
-
-.movie-meta span{
-  background:#1b1b1b;
-  padding:8px 12px;
-  border-radius:10px;
-  font-size:13px;
-}
-
-.movie-story{
-  color:#ccc;
-  line-height:1.8;
-}
-
-@media(max-width:768px){
-
-  .hero img{
-    height:320px;
-  }
-
-  .hero-overlay{
-    padding:20px;
-  }
-
-  .title{
-    font-size:30px;
-  }
-
-  .social-section{
-    flex-direction:column;
-  }
-
-  .social-btn{
-    width:100%;
-  }
-
-}
-
 </style>
 </head>
-
 <body>
 
-<script>
-
-const MOVIE_THUMBNAIL =
-"https://image.tmdb.org/t/p/original/18hj6j2bwUV1bC7Alc6WAeXUU4s.jpg";
-
-const FACEBOOK_LINK =
-"https://facebook.com";
-
-const TELEGRAM_LINK =
-"https://t.me/";
-
-</script>
-
-<div class="container">
-
-<!-- TOP ADS -->
-
-<div class="ad-wrap">
-
-<div class="ad-box">
-
-<script type="text/javascript">
-atOptions = {
-    'key' : '9cbca9fc3fab1a4816a56e2fcd9cedb9',
+<div class="ad-top-container">
+    <div class="ad-placeholder ad-728x90">
+        <script>
+  atOptions = {
+    'key' : '453e0996357cdadd43b9a289a5273ae9',
     'format' : 'iframe',
-    'height' : 50,
-    'width' : 320,
+    'height' : 90,
+    'width' : 728,
     'params' : {}
-};
+  };
 </script>
+<script src="https://buffcasualwhine.com/453e0996357cdadd43b9a289a5273ae9/invoke.js"></script>
 
-<script type="text/javascript" src="//twigentirelysailor.com/9cbca9fc3fab1a4816a56e2fcd9cedb9/invoke.js"></script>
-
-</div>
-</div>
-
-<!-- HERO -->
-
-<div class="hero">
-
-<img src="" id="heroImage">
-
-<div class="hero-overlay">
-
-<div class="title">
-Watch Best Movies and TV shows online
+    </div>
 </div>
 
-<div class="desc">
-Why it works: Instead of listing every single device (PC, Mac, tablet, etc.), grouping them into "your favorite devices" makes the sentence much shorter and punchier for readers who are just skimming.
-</div>
+<div class="main-layout">
 
-<div class="tags">
-<span>FULL HD</span>
-<span>Top box office</span>
-<span>Movies</span>
-<span>TV</span>
-</div>
-<div class="ad-box">
-  <center>
-<script>
-(function(sld){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = sld || {};
-s.src = "\/\/shockedguard.com\/b\/XfV\/s.d\/GAlx0UYgW\/cG\/beImy9juxZzU-l\/kdP\/TVc\/xuNFzukNzaNHjEE\/t\/NYzOE\/3\/OqTSMM2\/NDQE";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})
+    <div class="ad-placeholder ad-left-160x600">
+        <script>
+  atOptions = {
+    'key' : '501af5810078119c948021aacace01cd',
+    'format' : 'iframe',
+    'height' : 600,
+    'width' : 160,
+    'params' : {}
+  };
 </script>
-</center>
-</div>
-</div>
-</div>
-</div>
+<script src="https://buffcasualwhine.com/501af5810078119c948021aacace01cd/invoke.js"></script>
 
-<div class="page-layout">
+    </div>
 
-<!-- MAIN -->
+    <div class="security-card">
+        <div class="movie-icon">🎬</div>
+        
+        <h2>ยืนยันตัวตนเพื่อรับชมวิดีโอ</h2>
+        <p class="subtext" id="statusText">
+            กรุณายืนยันว่าคุณไม่ใช่โปรแกรมอัตโนมัติ เพื่อปลดล็อกเซิร์ฟเวอร์สตรีมมิ่งและรับชมภาพยนตร์หรือซีรีส์ต่อ
+        </p>
+        
+        <div class="captcha-box" id="captchaBox">
+            <div class="checkbox" id="checkbox"></div>
+            <span id="questionText">ฉันไม่ใช่หุ่นยนต์ (เล่นวิดีโอ)</span>
+        </div>
 
-<div>
-
-<!-- PLAYER -->
-
-<div class="player">
-
-<iframe src="https://vidsrcme.su/embed/movie?tmdb=4258" allowfullscreen></iframe>
-
-</div>
-
-<!-- SOCIAL -->
-
-<div class="social-section">
-
-<a
-id="facebookBtn"
-target="_blank"
-class="social-btn facebook-btn">
-📘 Follow Facebook
-</a>
-
-<a
-id="telegramBtn"
-target="_blank"
-class="social-btn telegram-btn">
-📢 Join Telegram
-</a>
-
-</div>
-
-<!-- 300x250 -->
-
-<div class="ad-wrap">
-
-<div class="ad-box">
-
-<script type="text/javascript">
-atOptions = {
+        <div class="ad-placeholder ad-300x250">
+            <script>
+  atOptions = {
     'key' : '40ecfb714f1985e7398bb0e2a12dc5c3',
     'format' : 'iframe',
     'height' : 250,
     'width' : 300,
     'params' : {}
-};
+  };
 </script>
+<script src="https://buffcasualwhine.com/40ecfb714f1985e7398bb0e2a12dc5c3/invoke.js"></script>
 
-<script type="text/javascript" src="//twigentirelysailor.com/40ecfb714f1985e7398bb0e2a12dc5c3/invoke.js"></script>
+        </div>
 
-</div>
-</div>
+        <div class="countdown-container" id="countdownContainer">
+            กำลังเชื่อมต่อเซิร์ฟเวอร์... วิดีโอจะพร้อมใช้งานในอีก <span id="timer">15</span> วินาที
+        </div>
+        
+        <div class="footer-text">
+            ระบบสตรีมมิ่งเข้ารหัสปลอดภัย • รองรับความละเอียด Full HD • เซิร์ฟเวอร์ความเร็วสูง
+        </div>
+    </div>
 
-<!-- MOVIE INFO -->
-
-<div class="movie-info">
-
-<h2>Instantly stream Netflix movies and TV shows on your smart TV, console, phone, or tablet.</h2>
-
-<div class="movie-meta">
-
-<span>⭐ 10/10</span>
-<span>🎬 FULL HD</span>
-<span>⏱ 3h 18m</span>
-<span>🌏 TH/EN</span>
-
-</div>
-
-<div class="movie-story">
-
-Why it works: Replacing the ampersand (&) with "and" makes it look more professional. Changing "right to" to "directly to" sounds a bit smoother, and adding the final comma (the Oxford comma) clarifies the list of devices.
-
-</div>
-
-</div>
-
-<!-- 468x60 -->
-
-<div class="ad-wrap">
-
-<div class="ad-box">
-
-<script type="text/javascript">
-atOptions = {
-    'key' : '9cbca9fc3fab1a4816a56e2fcd9cedb9',
-    'format' : 'iframe',
-    'height' : 50,
-    'width' : 320,
-    'params' : {}
-};
-</script>
-
-<script type="text/javascript" src="//twigentirelysailor.com/9cbca9fc3fab1a4816a56e2fcd9cedb9/invoke.js"></script>
-
-</div>
-</div>
-
-</div>
-
-<!-- SIDEBAR -->
-
-<div class="sidebar-ads">
-
-<div class="ad-box">
-
-<script>
+    <div class="ad-placeholder ad-right-160x300">
+        <script>
   atOptions = {
     'key' : 'b1459668f954a85fab060a214b597df2',
     'format' : 'iframe',
@@ -494,51 +335,85 @@ atOptions = {
 </script>
 <script src="https://buffcasualwhine.com/b1459668f954a85fab060a214b597df2/invoke.js"></script>
 
-</div>
+    </div>
 
 </div>
 
-</div>
+<div class="ad-placeholder ad-468x60">
+    <script>
+  atOptions = {
+    'key' : 'e12c3573cb4e0def1b3a1938aa8f0654',
+    'format' : 'iframe',
+    'height' : 60,
+    'width' : 468,
+    'params' : {}
+  };
+</script>
+<script src="https://buffcasualwhine.com/e12c3573cb4e0def1b3a1938aa8f0654/invoke.js"></script>
 
 </div>
 
-<!-- MOBILE STICKY -->
-
-<div class="mobile-sticky-ad">
-
-<div class="mobile-sticky-inner">
-
-<script type="text/javascript">
-atOptions = {
+<div class="ad-sticky-mobile">
+    <div class="ad-placeholder ad-320x50">
+        <script>
+  atOptions = {
     'key' : '9cbca9fc3fab1a4816a56e2fcd9cedb9',
     'format' : 'iframe',
     'height' : 50,
     'width' : 320,
     'params' : {}
-};
+  };
 </script>
+<script src="https://buffcasualwhine.com/9cbca9fc3fab1a4816a56e2fcd9cedb9/invoke.js"></script>
 
-<script type="text/javascript" src="//twigentirelysailor.com/9cbca9fc3fab1a4816a56e2fcd9cedb9/invoke.js"></script>
-
-</div>
+    </div>
 </div>
 
 <script>
-
-/* HERO IMAGE */
-
-document.getElementById("heroImage").src =
-MOVIE_THUMBNAIL;
-
-/* SOCIAL LINKS */
-
-document.getElementById("facebookBtn").href =
-FACEBOOK_LINK;
-
-document.getElementById("telegramBtn").href =
-TELEGRAM_LINK;
-
+document.getElementById('captchaBox').addEventListener('click', function() {
+    var checkbox = document.getElementById('checkbox');
+    var captchaBox = document.getElementById('captchaBox');
+    var countdownContainer = document.getElementById('countdownContainer');
+    var statusText = document.getElementById('statusText');
+    
+    if (checkbox.classList.contains('checked')) return;
+    
+    checkbox.classList.add('checked');
+    
+    captchaBox.style.pointerEvents = 'none';
+    captchaBox.style.opacity = '0.6';
+    
+    statusText.innerText = "ยืนยันตัวตนสำเร็จ! กำลังเตรียมเครื่องเล่นวิดีโอของคุณ...";
+    
+    countdownContainer.style.display = 'block';
+    
+    var timeLeft = 15;
+    var timerElement = document.getElementById('timer');
+    
+    var countdownInterval = setInterval(function() {
+        timeLeft--;
+        timerElement.textContent = timeLeft;
+        
+        if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+            window.location.href = "https://buffcasualwhine.com/wr8004x9r?key=18f7a7ba1e3a9ad30183a10512fe8d39";
+        }
+    }, 1000);
+});
 </script>
+
+<!-- Histats.com  START  (aync)-->
+<script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,5011181,4,0,0,0,00010000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5011181&101" alt="web stats" border="0"></a></noscript>
+<!-- Histats.com  END  -->
 
 </body>
 </html>
